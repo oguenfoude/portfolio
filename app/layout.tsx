@@ -1,22 +1,50 @@
 import type { Metadata } from 'next';
+import { Space_Grotesk, Inter, JetBrains_Mono, Noto_Sans_Arabic } from 'next/font/google';
 import './globals.css';
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700'],
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-body',
+  weight: ['300', '400', '500', '600', '700'],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500'],
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ['arabic'],
+  variable: '--font-arabic',
+  weight: ['300', '400', '500', '600', '700'],
+});
+
 export const metadata: Metadata = {
-  title: 'Oussama Guenfoude | Web Developer - مطور مواقع',
-  description: 'Professional website design for barbershops, clinics, and small businesses. تصميم مواقع احترافية للصالونات والعيادات والشركات الصغيرة',
-  keywords: ['web developer', 'website design', 'barber shop website', 'dental clinic website', 'مطور مواقع', 'تصميم مواقع', 'صالون حلاقة', 'عيادة أسنان'],
+  title: 'Guendoude Oussama | Full-Stack Developer',
+  description: 'Full-stack developer specializing in modern web applications, SaaS platforms, and bots. 30+ projects across Healthcare, E-Commerce, and custom solutions.',
+  keywords: ['web developer', 'full-stack', 'Next.js', 'React', 'TypeScript', 'Python', 'healthcare', 'e-commerce', 'portfolio'],
   openGraph: {
-    title: 'Oussama Guenfoude | Web Developer',
-    description: 'Professional website design for barbershops, clinics, and small businesses',
-    url: 'https://oguenfoude.vercel.app',
-    siteName: 'Oussama Guenfoude Portfolio',
-    locale: 'en_US',
+    title: 'Guendoude Oussama | Full-Stack Developer',
+    description: 'Full-stack developer specializing in modern web applications, SaaS platforms, and bots.',
     type: 'website',
+    locale: 'en_US',
+    alternateLocale: 'ar_DZ',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Oussama Guenfoude | Web Developer',
-    description: 'Professional website design for barbershops, clinics, and small businesses',
+    title: 'Guendoude Oussama | Full-Stack Developer',
+    description: 'Full-stack developer specializing in modern web applications, SaaS platforms, and bots.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -26,13 +54,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased">
+      <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${notoSansArabic.variable} antialiased`}>
         {children}
       </body>
     </html>
