@@ -4,13 +4,15 @@ import { Globe, Smartphone, Bot, Database, Stethoscope, BrainCircuit } from 'luc
 import { services } from '@/data/content';
 
 const iconMap: Record<string, React.ReactNode> = {
-  Globe: <Globe size={24} />,
-  Smartphone: <Smartphone size={24} />,
-  Bot: <Bot size={24} />,
-  Database: <Database size={24} />,
-  Stethoscope: <Stethoscope size={24} />,
-  'Brain-Circuit': <BrainCircuit size={24} />,
+  Globe: <Globe size={22} />,
+  Smartphone: <Smartphone size={22} />,
+  Bot: <Bot size={22} />,
+  Database: <Database size={22} />,
+  Stethoscope: <Stethoscope size={22} />,
+  'Brain-Circuit': <BrainCircuit size={22} />,
 };
+
+const serviceColors = ['#4f8eff', '#34d399', '#a78bfa', '#f59e0b', '#22d3ee', '#f472b6'];
 
 interface ServicesProps {
   lang: 'en' | 'ar';
@@ -31,30 +33,39 @@ export default function Services({ lang, AnimatedSection }: ServicesProps) {
         </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service, i) => (
-            <AnimatedSection key={i} delay={i * 80}>
-              <div className="glass rounded-2xl p-7 h-full transition-all duration-300 group"
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'rgba(79,142,255,0.3)';
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = '';
-                  e.currentTarget.style.transform = '';
-                }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300"
-                  style={{ background: 'rgba(79,142,255,0.1)', color: 'var(--blue)' }}>
-                  {iconMap[service.icon] || <Globe size={24} />}
+          {services.map((service, i) => {
+            const color = serviceColors[i % serviceColors.length];
+            return (
+              <AnimatedSection key={i} delay={i * 80}>
+                <div className="rounded-xl p-6 h-full transition-all duration-300 group"
+                  style={{
+                    background: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = color + '40';
+                    e.currentTarget.style.boxShadow = `0 8px 30px ${color}10`;
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = '';
+                    e.currentTarget.style.boxShadow = '';
+                    e.currentTarget.style.transform = '';
+                  }}>
+                  <div className="w-11 h-11 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300"
+                    style={{ background: color + '15', color }}>
+                    {iconMap[service.icon] || <Globe size={22} />}
+                  </div>
+                  <h3 className="text-base font-semibold text-white mb-2">
+                    {lang === 'ar' ? service.titleAr : service.titleEn}
+                  </h3>
+                  <p className="text-sm text-[var(--text-dim)] leading-relaxed">
+                    {lang === 'ar' ? service.descAr : service.descEn}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {lang === 'ar' ? service.titleAr : service.titleEn}
-                </h3>
-                <p className="text-sm text-[var(--text-dim)] leading-relaxed">
-                  {lang === 'ar' ? service.descAr : service.descEn}
-                </p>
-              </div>
-            </AnimatedSection>
-          ))}
+              </AnimatedSection>
+            );
+          })}
         </div>
       </div>
     </section>
