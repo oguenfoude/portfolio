@@ -8,7 +8,6 @@ import type { EnrichedProject } from '@/lib/github';
 interface ProjectsProps {
   lang: 'en' | 'ar';
   projects: EnrichedProject[];
-  AnimatedSection: React.ComponentType<{ children: React.ReactNode; className?: string; anim?: string; delay?: number }>;
 }
 
 const categoryColors: Record<string, string> = {
@@ -42,7 +41,7 @@ function LanguageBadge({ lang }: { lang: string }) {
   );
 }
 
-export default function Projects({ lang, projects, AnimatedSection }: ProjectsProps) {
+export default function Projects({ lang, projects }: ProjectsProps) {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const filtered = useMemo(() => {
@@ -59,16 +58,16 @@ export default function Projects({ lang, projects, AnimatedSection }: ProjectsPr
   return (
     <section id="projects" className="py-28 px-6">
       <div className="max-w-7xl mx-auto">
-        <AnimatedSection className="text-center mb-14">
+        <div className="text-center mb-14 animate-fade-up">
           <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4">
             <span className="gradient-text">{lang === 'ar' ? 'مشاريعي' : 'My Projects'}</span>
           </h2>
           <p className="text-[var(--text-dim)] max-w-xl mx-auto">
             {lang === 'ar' ? `${projects.length} مشروع跨越 مختلف المجالات` : `${projects.length} projects across various domains and technologies`}
           </p>
-        </AnimatedSection>
+        </div>
 
-        <AnimatedSection className="flex flex-wrap justify-center gap-2 mb-14" delay={100}>
+        <div className="flex flex-wrap justify-center gap-2 mb-14 animate-fade-up" style={{ animationDelay: '100ms' }}>
           {Object.entries(categories).map(([key, label]) => (
             <button key={key} onClick={() => setActiveCategory(key)}
               className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
@@ -82,13 +81,13 @@ export default function Projects({ lang, projects, AnimatedSection }: ProjectsPr
               <span className="ml-1.5 text-xs opacity-60">({counts[key] || 0})</span>
             </button>
           ))}
-        </AnimatedSection>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((project, i) => {
             const accent = categoryColors[project.category] || '#6b7280';
             return (
-              <AnimatedSection key={project.name} delay={i * 40}>
+              <div key={project.name} className="animate-fade-up" style={{ animationDelay: `${i * 40}ms` }}>
                 <a href={project.demoUrl || project.githubUrl} target="_blank" rel="noopener noreferrer"
                   className="block rounded-xl overflow-hidden transition-all duration-300 group"
                   style={{
@@ -173,7 +172,7 @@ export default function Projects({ lang, projects, AnimatedSection }: ProjectsPr
                     </div>
                   </div>
                 </a>
-              </AnimatedSection>
+              </div>
             );
           })}
         </div>

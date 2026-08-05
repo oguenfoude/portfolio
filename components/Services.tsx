@@ -16,27 +16,26 @@ const serviceColors = ['#4f8eff', '#34d399', '#a78bfa', '#f59e0b', '#22d3ee', '#
 
 interface ServicesProps {
   lang: 'en' | 'ar';
-  AnimatedSection: React.ComponentType<{ children: React.ReactNode; className?: string; anim?: string; delay?: number }>;
 }
 
-export default function Services({ lang, AnimatedSection }: ServicesProps) {
+export default function Services({ lang }: ServicesProps) {
   return (
     <section id="services" className="py-28 px-6" style={{ background: 'rgba(255,255,255,0.01)' }}>
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4">
             <span className="gradient-text">{lang === 'ar' ? 'خدماتي' : 'Services'}</span>
           </h2>
           <p className="text-[var(--text-dim)] max-w-xl mx-auto">
             {lang === 'ar' ? 'حلول تقنية متكاملة لاحتياجاتك' : 'Complete tech solutions for your needs'}
           </p>
-        </AnimatedSection>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => {
             const color = serviceColors[i % serviceColors.length];
             return (
-              <AnimatedSection key={i} delay={i * 80}>
+              <div key={i} className="animate-fade-up" style={{ animationDelay: `${i * 80}ms` }}>
                 <div className="rounded-xl p-6 h-full transition-all duration-300 group"
                   style={{
                     background: 'var(--surface)',
@@ -63,7 +62,7 @@ export default function Services({ lang, AnimatedSection }: ServicesProps) {
                     {lang === 'ar' ? service.descAr : service.descEn}
                   </p>
                 </div>
-              </AnimatedSection>
+              </div>
             );
           })}
         </div>

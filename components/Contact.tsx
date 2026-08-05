@@ -4,14 +4,13 @@ import { MessageCircle, Mail, Github, ArrowRight } from 'lucide-react';
 
 interface ContactProps {
   lang: 'en' | 'ar';
-  AnimatedSection: React.ComponentType<{ children: React.ReactNode; className?: string; anim?: string; delay?: number }>;
 }
 
-export default function Contact({ lang, AnimatedSection }: ContactProps) {
+export default function Contact({ lang }: ContactProps) {
   return (
     <section id="contact" className="py-28 px-6" style={{ background: 'rgba(255,255,255,0.01)' }}>
       <div className="max-w-4xl mx-auto text-center">
-        <AnimatedSection>
+        <div className="animate-fade-up">
           <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4">
             <span className="gradient-text">{lang === 'ar' ? 'لنتحدث' : "Let's Talk"}</span>
           </h2>
@@ -21,9 +20,9 @@ export default function Contact({ lang, AnimatedSection }: ContactProps) {
               : "Have a project in mind? Get in touch and I'll help bring it to life."
             }
           </p>
-        </AnimatedSection>
+        </div>
 
-        <AnimatedSection delay={100}>
+        <div className="animate-fade-up" style={{ animationDelay: '100ms' }}>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-14">
             <a href="https://wa.me/213776863561?text=Hi%20Oussama!%20I%27m%20interested%20in%20your%20services."
               target="_blank" rel="noopener noreferrer"
@@ -80,9 +79,9 @@ export default function Contact({ lang, AnimatedSection }: ContactProps) {
               <span className="text-sm text-[var(--text-dim)]">@oguenfoude</span>
             </a>
           </div>
-        </AnimatedSection>
+        </div>
 
-        <AnimatedSection delay={200}>
+        <div className="animate-fade-up" style={{ animationDelay: '200ms' }}>
           <a href="https://wa.me/213776863561?text=Hi%20Oussama!%20I%20want%20to%20discuss%20a%20project."
             target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-4 rounded-xl font-semibold text-lg text-white transition-all duration-300"
@@ -92,7 +91,7 @@ export default function Contact({ lang, AnimatedSection }: ContactProps) {
             {lang === 'ar' ? 'ابدأ مشروعك الآن' : 'Start Your Project'}
             <ArrowRight size={20} />
           </a>
-        </AnimatedSection>
+        </div>
       </div>
     </section>
   );

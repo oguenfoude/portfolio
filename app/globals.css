@@ -104,6 +104,40 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
 ::selection { background: rgba(79,142,255,0.3); }
 
+/* Section animations — visible by default, animated via CSS */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-right {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-left {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-up,
+.animate-fade-right,
+.animate-fade-left {
+  animation-fill-mode: both;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+}
+.animate-fade-up { animation-name: fade-up; }
+.animate-fade-right { animation-name: fade-right; }
+.animate-fade-left { animation-name: fade-left; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-right,
+  .animate-fade-left {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero-grid { grid-template-columns: 1fr !important; }

@@ -5,21 +5,20 @@ import { skills } from '@/data/content';
 
 interface AboutProps {
   lang: 'en' | 'ar';
-  AnimatedSection: React.ComponentType<{ children: React.ReactNode; className?: string; anim?: string; delay?: number }>;
 }
 
-export default function About({ lang, AnimatedSection }: AboutProps) {
+export default function About({ lang }: AboutProps) {
   return (
     <section id="about" className="py-28 px-6">
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4">
             <span className="gradient-text">{lang === 'ar' ? 'عني' : 'About Me'}</span>
           </h2>
-        </AnimatedSection>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-          <AnimatedSection anim="fade-left">
+          <div className="animate-fade-left">
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-white font-display">Guendoude Oussama</h3>
               <p className="text-[var(--text-dim)] leading-relaxed">
@@ -53,9 +52,9 @@ export default function About({ lang, AnimatedSection }: AboutProps) {
                 </a>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
 
-          <AnimatedSection anim="fade-right" delay={100}>
+          <div className="animate-fade-right" style={{ animationDelay: '100ms' }}>
             <div>
               <h4 className="text-sm font-mono text-[var(--text-muted)] mb-5 tracking-[0.2em] uppercase">
                 {lang === 'ar' ? 'المهارات' : 'Tech Stack'}
@@ -78,7 +77,7 @@ export default function About({ lang, AnimatedSection }: AboutProps) {
                 ))}
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </div>
     </section>

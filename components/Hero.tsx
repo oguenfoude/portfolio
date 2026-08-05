@@ -5,41 +5,40 @@ import { stats } from '@/data/content';
 
 interface HeroProps {
   lang: 'en' | 'ar';
-  AnimatedSection: React.ComponentType<{ children: React.ReactNode; className?: string; anim?: string; delay?: number }>;
 }
 
-export default function Hero({ lang, AnimatedSection }: HeroProps) {
+export default function Hero({ lang }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="hero-grid grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text */}
           <div>
-            <AnimatedSection anim="fade-up" delay={100}>
+            <div className="animate-fade-up" style={{ animationDelay: '100ms' }}>
               <p className="text-sm font-mono text-[var(--blue)] mb-5 tracking-[0.2em] uppercase flex items-center gap-3">
                 <span className="w-10 h-px bg-[var(--blue)]" />
                 {lang === 'ar' ? 'مطور ويب متكامل' : 'Full-Stack Developer'}
               </p>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection anim="fade-up" delay={200}>
+            <div className="animate-fade-up" style={{ animationDelay: '200ms' }}>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-display leading-[1.08] mb-6">
                 <span className="gradient-text">{lang === 'ar' ? 'أبني تجارب' : 'I Build'}</span>
                 <br />
                 <span className="text-white">{lang === 'ar' ? 'رقمية مذهلة' : 'Digital Experiences'}</span>
               </h1>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection anim="fade-up" delay={300}>
+            <div className="animate-fade-up" style={{ animationDelay: '300ms' }}>
               <p className="text-lg text-[var(--text-dim)] max-w-lg mb-10 leading-relaxed">
                 {lang === 'ar'
                   ? 'مطور ويب متكامل متخصص في بناء مواقع وتطبيقات وبوتات حديثة. خبرة في 30+ مشروع.'
                   : 'Full-stack developer specializing in modern websites, apps, and bots. 30+ projects across Healthcare, E-Commerce, and custom solutions.'
                 }
               </p>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection anim="fade-up" delay={400}>
+            <div className="animate-fade-up" style={{ animationDelay: '400ms' }}>
               <div className="flex flex-wrap gap-4 mb-12">
                 <a href="#projects"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium text-white transition-all duration-300"
@@ -61,9 +60,9 @@ export default function Hero({ lang, AnimatedSection }: HeroProps) {
                   GitHub
                 </a>
               </div>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection anim="fade-up" delay={500}>
+            <div className="animate-fade-up" style={{ animationDelay: '500ms' }}>
               <div className="grid grid-cols-4 gap-6 max-w-md">
                 {stats.map((stat, i) => (
                   <div key={i} className="text-center">
@@ -74,12 +73,12 @@ export default function Hero({ lang, AnimatedSection }: HeroProps) {
                   </div>
                 ))}
               </div>
-            </AnimatedSection>
+            </div>
           </div>
 
           {/* Right: Code Card */}
           <div className="hero-code hidden lg:block">
-            <AnimatedSection anim="fade-right" delay={400}>
+            <div className="animate-fade-right" style={{ animationDelay: '400ms' }}>
               <div className="code-card" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.4)' }}>
                 <div className="titlebar">
                   <div className="dot r" />
@@ -109,7 +108,7 @@ export default function Hero({ lang, AnimatedSection }: HeroProps) {
                   </code>
                 </pre>
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </div>
       </div>
