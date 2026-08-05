@@ -89,20 +89,14 @@ export default function Projects({ lang, projects }: ProjectsProps) {
             return (
               <div key={project.name} className="animate-fade-up" style={{ animationDelay: `${i * 40}ms` }}>
                 <a href={project.demoUrl || project.githubUrl} target="_blank" rel="noopener noreferrer"
-                  className="block rounded-xl overflow-hidden transition-all duration-300 group"
-                  style={{
-                    background: 'var(--surface)',
-                    border: '1px solid var(--border)',
-                  }}
+                  className="project-card block overflow-hidden group"
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = accent + '40';
-                    e.currentTarget.style.boxShadow = `0 8px 30px ${accent}15`;
-                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.borderColor = accent + '50';
+                    e.currentTarget.style.boxShadow = `0 12px 40px ${accent}18`;
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.borderColor = '';
                     e.currentTarget.style.boxShadow = '';
-                    e.currentTarget.style.transform = '';
                   }}>
                   {/* Accent bar */}
                   <div className="h-1" style={{ background: `linear-gradient(90deg, ${accent}, ${accent}60)` }} />

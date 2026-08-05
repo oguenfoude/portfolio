@@ -36,26 +36,20 @@ export default function Services({ lang }: ServicesProps) {
             const color = serviceColors[i % serviceColors.length];
             return (
               <div key={i} className="animate-fade-up" style={{ animationDelay: `${i * 80}ms` }}>
-                <div className="rounded-xl p-6 h-full transition-all duration-300 group"
-                  style={{
-                    background: 'var(--surface)',
-                    border: '1px solid var(--border)',
-                  }}
+                <div className="service-card h-full group"
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = color + '40';
-                    e.currentTarget.style.boxShadow = `0 8px 30px ${color}10`;
-                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.borderColor = color + '50';
+                    e.currentTarget.style.boxShadow = `0 12px 40px ${color}15`;
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.borderColor = '';
                     e.currentTarget.style.boxShadow = '';
-                    e.currentTarget.style.transform = '';
                   }}>
-                  <div className="w-11 h-11 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300"
-                    style={{ background: color + '15', color }}>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                    style={{ background: color + '18', color }}>
                     {iconMap[service.icon] || <Globe size={22} />}
                   </div>
-                  <h3 className="text-base font-semibold text-white mb-2">
+                  <h3 className="text-lg font-semibold text-white mb-2">
                     {lang === 'ar' ? service.titleAr : service.titleEn}
                   </h3>
                   <p className="text-sm text-[var(--text-dim)] leading-relaxed">

@@ -65,12 +65,14 @@ export default function About({ lang }: AboutProps) {
                     className="px-3 py-1.5 text-sm font-mono rounded-lg transition-all duration-200 cursor-default"
                     style={{ background: 'var(--surface)', color: 'var(--text-dim)', border: '1px solid var(--border)' }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.borderColor = 'rgba(79,142,255,0.4)';
+                      e.currentTarget.style.borderColor = 'rgba(79,142,255,0.5)';
                       e.currentTarget.style.color = '#fff';
+                      e.currentTarget.style.background = 'rgba(79,142,255,0.1)';
                     }}
                     onMouseLeave={e => {
                       e.currentTarget.style.borderColor = '';
                       e.currentTarget.style.color = '';
+                      e.currentTarget.style.background = '';
                     }}>
                     {skill}
                   </span>
