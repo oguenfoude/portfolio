@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Globe, Smartphone, Bot, Database, Stethoscope, BrainCircuit } from 'lucide-react';
 import { services } from '@/data/content';
 
@@ -15,49 +14,46 @@ const iconMap: Record<string, React.ReactNode> = {
 
 interface ServicesProps {
   lang: 'en' | 'ar';
+  AnimatedSection: React.ComponentType<{ children: React.ReactNode; className?: string; anim?: string; delay?: number }>;
 }
 
-export default function Services({ lang }: ServicesProps) {
+export default function Services({ lang, AnimatedSection }: ServicesProps) {
   return (
-    <section id="services" className="py-24 px-4 bg-zinc-950/50">
+    <section id="services" className="py-28 px-6" style={{ background: 'rgba(255,255,255,0.01)' }}>
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <AnimatedSection className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4">
             <span className="gradient-text">{lang === 'ar' ? 'خدماتي' : 'Services'}</span>
           </h2>
-          <p className="text-zinc-400 max-w-xl mx-auto">
-            {lang === 'ar'
-              ? 'حلول تقنية متكاملة لاحتياجاتك'
-              : 'Complete tech solutions for your needs'
-            }
+          <p className="text-[var(--text-dim)] max-w-xl mx-auto">
+            {lang === 'ar' ? 'حلول تقنية متكاملة لاحتياجاتك' : 'Complete tech solutions for your needs'}
           </p>
-        </motion.div>
+        </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-6 glass glass-hover rounded-2xl transition-all group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors">
-                {iconMap[service.icon] || <Globe size={24} />}
+            <AnimatedSection key={i} delay={i * 80}>
+              <div className="glass rounded-2xl p-7 h-full transition-all duration-300 group"
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'rgba(79,142,255,0.3)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = '';
+                  e.currentTarget.style.transform = '';
+                }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300"
+                  style={{ background: 'rgba(79,142,255,0.1)', color: 'var(--blue)' }}>
+                  {iconMap[service.icon] || <Globe size={24} />}
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {lang === 'ar' ? service.titleAr : service.titleEn}
+                </h3>
+                <p className="text-sm text-[var(--text-dim)] leading-relaxed">
+                  {lang === 'ar' ? service.descAr : service.descEn}
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">
-                {lang === 'ar' ? service.titleAr : service.titleEn}
-              </h3>
-              <p className="text-sm text-zinc-400 leading-relaxed">
-                {lang === 'ar' ? service.descAr : service.descEn}
-              </p>
-            </motion.div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

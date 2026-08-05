@@ -1,176 +1,123 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowDown, Github, Mail, MessageCircle, Code2, Palette, Zap } from 'lucide-react';
+import { ArrowDown, MessageCircle, Github, Code2 } from 'lucide-react';
 import { stats } from '@/data/content';
 
 interface HeroProps {
   lang: 'en' | 'ar';
+  AnimatedSection: React.ComponentType<{ children: React.ReactNode; className?: string; anim?: string; delay?: number }>;
 }
 
-export default function Hero({ lang }: HeroProps) {
+export default function Hero({ lang, AnimatedSection }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-      <div className="orb orb-3" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <div className="max-w-7xl mx-auto px-6 w-full">
+        <div className="hero-grid grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Text */}
+          <div>
+            <AnimatedSection anim="fade-up" delay={100}>
+              <p className="text-sm font-mono text-[var(--blue)] mb-5 tracking-[0.2em] uppercase flex items-center gap-3">
+                <span className="w-10 h-px bg-[var(--blue)]" />
+                {lang === 'ar' ? 'مطور ويب متكامل' : 'Full-Stack Developer'}
+              </p>
+            </AnimatedSection>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <p className="text-sm font-mono text-blue-400 mb-4 tracking-widest uppercase flex items-center gap-2">
-              <span className="w-8 h-px bg-blue-400" />
-              {lang === 'ar' ? 'مطور ويب متكامل' : 'Full-Stack Developer'}
-            </p>
-          </motion.div>
+            <AnimatedSection anim="fade-up" delay={200}>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-display leading-[1.08] mb-6">
+                <span className="gradient-text">{lang === 'ar' ? 'أبني تجارب' : 'I Build'}</span>
+                <br />
+                <span className="text-white">{lang === 'ar' ? 'رقمية مذهلة' : 'Digital Experiences'}</span>
+              </h1>
+            </AnimatedSection>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold font-display mb-6 leading-[1.1]"
-          >
-            <span className="gradient-text">
-              {lang === 'ar' ? 'أبني تجارب' : 'I Build'}
-            </span>
-            <br />
-            <span className="text-white">
-              {lang === 'ar' ? 'رقمية مذهلة' : 'Digital Experiences'}
-            </span>
-          </motion.h1>
+            <AnimatedSection anim="fade-up" delay={300}>
+              <p className="text-lg text-[var(--text-dim)] max-w-lg mb-10 leading-relaxed">
+                {lang === 'ar'
+                  ? 'مطور ويب متكامل متخصص في بناء مواقع وتطبيقات وبوتات حديثة. خبرة في 30+ مشروع.'
+                  : 'Full-stack developer specializing in modern websites, apps, and bots. 30+ projects across Healthcare, E-Commerce, and custom solutions.'
+                }
+              </p>
+            </AnimatedSection>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg text-zinc-400 max-w-lg mb-10 leading-relaxed"
-          >
-            {lang === 'ar'
-              ? 'مطور ويب متكامل متخصص في بناء مواقع وتطبيقات وبوتات حديثة. خبرة في 30+ مشروع跨越 مجالات الرعاية الصحية والتجارة الإلكترونية.'
-              : 'Full-stack developer specializing in modern websites, apps, and bots. 30+ projects across Healthcare, E-Commerce, and custom solutions.'
-            }
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap gap-4 mb-12"
-          >
-            <a
-              href="#projects"
-              className="px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-medium transition-all hover:shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
-            >
-              <Code2 size={18} />
-              {lang === 'ar' ? 'مشاريعي' : 'View Projects'}
-            </a>
-            <a
-              href="https://wa.me/213776863561"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-medium transition-all glow-whatsapp flex items-center gap-2"
-            >
-              <MessageCircle size={18} />
-              WhatsApp
-            </a>
-            <a
-              href="https://github.com/oguenfoude"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3.5 glass glass-hover text-zinc-300 hover:text-white rounded-xl font-medium transition-all flex items-center gap-2"
-            >
-              <Github size={18} />
-              GitHub
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="grid grid-cols-4 gap-6"
-          >
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-2xl font-bold gradient-text font-display">{stat.value}</div>
-                <div className="text-xs text-zinc-500 mt-1 font-mono">
-                  {lang === 'ar' ? stat.ar : stat.labelEn}
-                </div>
+            <AnimatedSection anim="fade-up" delay={400}>
+              <div className="flex flex-wrap gap-4 mb-12">
+                <a href="#projects"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium text-white transition-all duration-300"
+                  style={{ background: 'var(--blue)' }}
+                  onMouseEnter={e => (e.currentTarget.style.filter = 'brightness(1.15)')}
+                  onMouseLeave={e => (e.currentTarget.style.filter = '')}>
+                  <Code2 size={18} />
+                  {lang === 'ar' ? 'مشاريعي' : 'View Projects'}
+                </a>
+                <a href="https://wa.me/213776863561" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium text-white transition-all duration-300"
+                  style={{ background: 'var(--whatsapp)', boxShadow: '0 0 30px rgba(37,211,102,0.2)' }}>
+                  <MessageCircle size={18} />
+                  WhatsApp
+                </a>
+                <a href="https://github.com/oguenfoude" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium glass text-[var(--text-dim)] hover:text-white transition-all duration-300">
+                  <Github size={18} />
+                  GitHub
+                </a>
               </div>
-            ))}
-          </motion.div>
-        </div>
+            </AnimatedSection>
 
-        <motion.div
-          initial={{ opacity: 0, x: 50, rotateY: -10 }}
-          animate={{ opacity: 1, x: 0, rotateY: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="hidden lg:block perspective-1000"
-        >
-          <div className="transform-3d">
-            <div className="glass p-6 space-y-4">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                <span className="text-xs text-zinc-500 font-mono ml-auto">portfolio.tsx</span>
+            <AnimatedSection anim="fade-up" delay={500}>
+              <div className="grid grid-cols-4 gap-6 max-w-md">
+                {stats.map((stat, i) => (
+                  <div key={i} className="text-center">
+                    <div className="stat-value gradient-text">{stat.value}</div>
+                    <div className="text-xs text-[var(--text-muted)] mt-1 font-mono">
+                      {lang === 'ar' ? stat.ar : stat.labelEn}
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="space-y-3 font-mono text-sm">
-                <div className="text-zinc-500">
-                  <span className="text-purple-400">const</span>{' '}
-                  <span className="text-blue-400">developer</span>{' '}
-                  <span className="text-zinc-500">=</span>{' '}
-                  <span className="text-emerald-400">{'{'}</span>
-                </div>
-                <div className="pl-6 text-zinc-400">
-                  name: <span className="text-amber-300">&quot;Oussama&quot;</span>,
-                </div>
-                <div className="pl-6 text-zinc-400">
-                  role: <span className="text-amber-300">&quot;Full-Stack Dev&quot;</span>,
-                </div>
-                <div className="pl-6 text-zinc-400">
-                  skills: <span className="text-emerald-400">[</span>
-                </div>
-                <div className="pl-10 text-zinc-400">
-                  <span className="text-amber-300">&quot;Next.js&quot;</span>,{' '}
-                  <span className="text-amber-300">&quot;React&quot;</span>,{' '}
-                  <span className="text-amber-300">&quot;TypeScript&quot;</span>,
-                </div>
-                <div className="pl-10 text-zinc-400">
-                  <span className="text-amber-300">&quot;Python&quot;</span>,{' '}
-                  <span className="text-amber-300">&quot;C#&quot;</span>,{' '}
-                  <span className="text-amber-300">&quot;Node.js&quot;</span>
-                </div>
-                <div className="pl-6 text-zinc-400">
-                  <span className="text-emerald-400">]</span>,
-                </div>
-                <div className="pl-6 text-zinc-400">
-                  projects: <span className="text-blue-400 font-bold">30</span>,
-                </div>
-                <div className="pl-6 text-zinc-400">
-                  availability: <span className="text-emerald-400">true</span>
-                </div>
-                <div className="text-emerald-400">{'}'}</div>
-              </div>
-            </div>
+            </AnimatedSection>
           </div>
-        </motion.div>
+
+          {/* Right: Code Card */}
+          <div className="hero-code hidden lg:block">
+            <AnimatedSection anim="fade-right" delay={400}>
+              <div className="code-card" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.4)' }}>
+                <div className="titlebar">
+                  <div className="dot r" />
+                  <div className="dot y" />
+                  <div className="dot g" />
+                  <span className="text-xs text-[var(--text-muted)] font-mono ml-auto">portfolio.tsx</span>
+                </div>
+                <pre>
+                  <code>
+                    <span style={{color:'var(--violet)'}}>const</span>{' '}
+                    <span style={{color:'var(--blue)'}}>developer</span>{' '}
+                    <span style={{color:'var(--text-muted)'}}>=</span>{' '}
+                    <span style={{color:'var(--emerald)'}}>{'{'}</span>{'\n'}
+                    {'  '}name: <span style={{color:'#fbbf24'}}>&quot;Oussama&quot;</span>,{'\n'}
+                    {'  '}role: <span style={{color:'#fbbf24'}}>&quot;Full-Stack Dev&quot;</span>,{'\n'}
+                    {'  '}skills: <span style={{color:'var(--emerald)'}}>[</span>{'\n'}
+                    {'    '}<span style={{color:'#fbbf24'}}>&quot;Next.js&quot;</span>,{' '}
+                    <span style={{color:'#fbbf24'}}>&quot;React&quot;</span>,{' '}
+                    <span style={{color:'#fbbf24'}}>&quot;TypeScript&quot;</span>,{'\n'}
+                    {'    '}<span style={{color:'#fbbf24'}}>&quot;Python&quot;</span>,{' '}
+                    <span style={{color:'#fbbf24'}}>&quot;C#&quot;</span>,{' '}
+                    <span style={{color:'#fbbf24'}}>&quot;Node.js&quot;</span>{'\n'}
+                    {'  '}<span style={{color:'var(--emerald)'}}>,</span>{'\n'}
+                    {'  '}projects: <span style={{color:'var(--blue)', fontWeight:700}}>30</span>,{'\n'}
+                    {'  '}availability: <span style={{color:'var(--emerald)'}}>true</span>{'\n'}
+                    <span style={{color:'var(--emerald)'}}>{'}'}</span>
+                  </code>
+                </pre>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <a href="#projects" className="text-zinc-600 hover:text-zinc-400 transition-colors animate-bounce inline-block">
-          <ArrowDown size={24} />
-        </a>
-      </motion.div>
+      <a href="#projects"
+        className="absolute bottom-8 left-1/2 bounce-arrow text-[var(--text-muted)] hover:text-[var(--text-dim)] transition-colors">
+        <ArrowDown size={24} />
+      </a>
     </section>
   );
 }

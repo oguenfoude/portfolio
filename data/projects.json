@@ -330,15 +330,5 @@
       "tech": ["Next.js"],
       "demoUrl": ""
     }
-  },
-  "categories": {
-    "all": { "en": "All Projects", "ar": "جميع المشاريع" },
-    "barber": { "en": "Barber Shops", "ar": "محلات حلاقة" },
-    "dental": { "en": "Dental Clinics", "ar": "عيادات أسنان" },
-    "healthcare": { "en": "Healthcare", "ar": "رعاية صحية" },
-    "ecommerce": { "en": "E-Commerce", "ar": "تجارة إلكترونية" },
-    "bots": { "en": "Bots", "ar": "بوتات" },
-    "apps": { "en": "Web Apps", "ar": "تطبيقات ويب" },
-    "other": { "en": "Other", "ar": "أخرى" }
   }
 }

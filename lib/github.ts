@@ -1,4 +1,4 @@
-import enrichments from '@/data/projects.json';
+import projectsData from '@/data/projects.json';
 
 export interface Repo {
   name: string;
@@ -32,6 +32,8 @@ export interface EnrichedProject {
 
 const CATEGORY_ORDER = ['barber', 'dental', 'healthcare', 'ecommerce', 'bots', 'apps', 'other'];
 
+const enrichments: Record<string, Record<string, unknown>> = (projectsData as Record<string, unknown>).enrichments as Record<string, Record<string, unknown>>;
+
 export async function fetchRepos(): Promise<Repo[]> {
   try {
     const res = await fetch('https://api.github.com/users/oguenfoude/repos?per_page=100&sort=updated', {
@@ -47,7 +49,6 @@ export async function fetchRepos(): Promise<Repo[]> {
 
 export async function getEnrichedProjects(): Promise<EnrichedProject[]> {
   const repos = await fetchRepos();
-  const enrichments = (enrichmentsData as Record<string, unknown>).enrichments as Record<string, Record<string, unknown>>;
 
   const projects: EnrichedProject[] = repos.map(repo => {
     const enrich = enrichments[repo.name] as Record<string, string> | undefined;
@@ -62,7 +63,7 @@ export async function getEnrichedProjects(): Promise<EnrichedProject[]> {
       category,
       categoryEn: enrich?.categoryEn || 'Other',
       categoryAr: enrich?.categoryAr || 'أخرى',
-      tech: enrich?.tech ? String(enrich.tech).split(',').map(s => s.trim()) : [repo.language || 'Unknown'],
+      tech: enrich?.tech ? (enrich.tech as unknown as string[]).map(String) : [repo.language || 'Unknown'],
       language: repo.language || 'N/A',
       githubUrl: repo.html_url,
       demoUrl: enrich?.demoUrl || repo.homepage || '',
@@ -83,5 +84,3 @@ function formatName(slug: string): string {
     .replace(/-/g, ' ')
     .replace(/\b\w/g, c => c.toUpperCase());
 }
-
-const enrichmentsData = enrichments;
