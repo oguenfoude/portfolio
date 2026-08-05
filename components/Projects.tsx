@@ -88,7 +88,7 @@ export default function Projects({ lang, projects }: ProjectsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="group relative bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 hover:border-zinc-600 transition-all hover:bg-zinc-900/80"
+              className="group relative glass glass-hover rounded-2xl p-6 transition-all"
             >
               <div className="flex items-start justify-between mb-3">
                 <div>

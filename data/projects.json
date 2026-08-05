@@ -329,17 +329,6 @@
       "descAr": "لوحة مراقبة الأعمال v2",
       "tech": ["Next.js"],
       "demoUrl": ""
-    },
-    "bs": {
-      "category": "other",
-      "categoryEn": "Other",
-      "categoryAr": "أخرى",
-      "titleEn": "BS Platform",
-      "titleAr": "منصة BS",
-      "descEn": "Business platform",
-      "descAr": "منصة أعمال",
-      "tech": ["Next.js"],
-      "demoUrl": ""
     }
   },
   "categories": {

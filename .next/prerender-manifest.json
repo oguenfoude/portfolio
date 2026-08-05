@@ -5,7 +5,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 77427,
+      "htmlSize": 118800,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -17,7 +17,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/",
       "dataRoute": "/index.rsc",
       "allowHeader": [
@@ -33,7 +34,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 8690,
+      "htmlSize": 8798,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -62,7 +63,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 11177,
+      "htmlSize": 10721,
       "experimentalBypassFor": [
         {
           "type": "header",

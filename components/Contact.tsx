@@ -40,7 +40,7 @@ export default function Contact({ lang }: ContactProps) {
             href="https://wa.me/213776863561?text=Hi%20Oussama!%20I%27m%20interested%20in%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-3 p-8 bg-[#25D366]/10 border border-[#25D366]/20 rounded-2xl hover:bg-[#25D366]/20 transition-all group"
+            className="flex flex-col items-center gap-3 p-8 glass glass-hover rounded-2xl transition-all group"
           >
             <div className="w-14 h-14 rounded-xl bg-[#25D366]/20 flex items-center justify-center text-[#25D366] group-hover:scale-110 transition-transform">
               <MessageCircle size={28} />
@@ -51,7 +51,7 @@ export default function Contact({ lang }: ContactProps) {
 
           <a
             href="mailto:oguenfoude@gmail.com"
-            className="flex flex-col items-center gap-3 p-8 bg-blue-500/10 border border-blue-500/20 rounded-2xl hover:bg-blue-500/20 transition-all group"
+            className="flex flex-col items-center gap-3 p-8 glass glass-hover rounded-2xl transition-all group"
           >
             <div className="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
               <Mail size={28} />
@@ -64,7 +64,7 @@ export default function Contact({ lang }: ContactProps) {
             href="https://github.com/oguenfoude"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-3 p-8 bg-zinc-800/50 border border-zinc-700 rounded-2xl hover:bg-zinc-800 transition-all group"
+            className="flex flex-col items-center gap-3 p-8 glass glass-hover rounded-2xl transition-all group"
           >
             <div className="w-14 h-14 rounded-xl bg-zinc-700/50 flex items-center justify-center text-zinc-300 group-hover:scale-110 transition-transform">
               <Github size={28} />

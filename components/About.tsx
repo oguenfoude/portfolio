@@ -91,7 +91,7 @@ export default function About({ lang }: AboutProps) {
               {skills.map(skill => (
                 <span
                   key={skill}
-                  className="px-3 py-1.5 text-sm font-mono bg-zinc-900 text-zinc-300 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors"
+                  className="px-3 py-1.5 text-sm font-mono glass glass-hover text-zinc-300 rounded-lg transition-colors"
                 >
                   {skill}
                 </span>

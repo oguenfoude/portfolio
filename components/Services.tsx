@@ -46,7 +46,7 @@ export default function Services({ lang }: ServicesProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-2xl hover:border-zinc-600 transition-all group"
+              className="p-6 glass glass-hover rounded-2xl transition-all group"
             >
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors">
                 {iconMap[service.icon] || <Globe size={24} />}
